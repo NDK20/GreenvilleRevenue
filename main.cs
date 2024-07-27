@@ -37,29 +37,39 @@ using System;
     }
     public static void CalculateRevenue()
     {
-      Console.WriteLine("Enter the number of contestants last year: ");
-      int lastYear = Convert.ToInt32(Console.ReadLine());
-      Console.WriteLine("Enter the number of contestants this year: ");
-      int thisYear = Convert.ToInt32(Console.ReadLine());
+      int lastYear = GetValidContestants("Enter the number of contestants last year: ");
+      int thisYear = GetValidContestants("Enter the number of contestants this year: ");
 
-      int revenue = thisYear * 25;
-      bool isBigEvent = thisYear > lastYear;
-
-      if (thisYear > lastYear * 2)
+      if (thisYear >= lastYear * 2)
       {
-      Console.WriteLine("The competition is more than twice as big this year!");
+        Console.WriteLine( "The competition is more than twice as big this year!");
       }
       else if (thisYear > lastYear)
       {
-      Console.WriteLine("The competition is bigger than ever!");
+        Console.WriteLine("The competition is bigger than ever!");
       }
-      else 
+      else
       {
-      Console.WriteLine("A tighter race this year! Come out and cast your vote!");
+        Console.WriteLine("A tighter race this year! Come out and cast your vote!");
       }
     }
-      static void ExitProgram()
+    public static int GetValidContestants(string prompt)
+    {
+      int contestants;
+      while (true)
       {
+        Console.WriteLine(prompt);
+        if (int.TryParse(Console.ReadLine(), out contestants) && contestants >= 0 && contestants <= 30) {
+          break;
+        }
+        else {
+          Console.WriteLine("Invalid input. Please enter a number between 0 and 30.");
+        }
+      }
+      return contestants;
+    }
+    static void ExitProgram()
+    {
       Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
-      }  
+    }
   }
