@@ -1,15 +1,15 @@
 using System;
 
-  class Program {
+  class Program 
+  {
     public static void Main (string[] args) {
-      DisplayMotto();
-      DisplayMenu();
+    DisplayMotto();
+    DisplayMenu();
     }
-    public static void DisplayMotto()
-    {
-      Console.WriteLine("************************************************");
-      Console.WriteLine("*  The stars shine in Greenville.  *");
-      Console.WriteLine("************************************************");
+    public static void DisplayMotto(){
+    Console.WriteLine("************************************************");
+    Console.WriteLine("*  The stars shine in Greenville.  *");
+    Console.WriteLine("************************************************");
     }
     public static void DisplayMenu()
     {
@@ -22,16 +22,16 @@ using System;
         string userInput = Console.ReadLine();
         if (userInput == "1")
         {
-          CalculateRevenue();
+        CalculateRevenue();
         }
         else if (userInput == "2")
         {
-          ExitProgram();
-          break;
+        ExitProgram();
+        break;
         }
         else
         {
-          Console.WriteLine("Invalid Input");
+        Console.WriteLine("Invalid Input");
         }
       }
     }
@@ -43,14 +43,23 @@ using System;
       int thisYear = Convert.ToInt32(Console.ReadLine());
 
       int revenue = thisYear * 25;
-      bool isBigEvent = thisYear >= lastYear;
+      bool isBigEvent = thisYear > lastYear;
 
-      Console.WriteLine($"\nLast year's competition had {lastYear} contestants, and this year's has {thisYear}");
-      Console.WriteLine($"Revenue expected this year is {revenue}.");
-      Console.WriteLine($"\nIt is {isBigEvent} that this year's competition is the biggest.");
+      if (thisYear > lastYear * 2)
+      {
+      Console.WriteLine("The competition is more than twice as big this year!");
+      }
+      else if (thisYear > lastYear)
+      {
+      Console.WriteLine("The competition is bigger than ever!");
+      }
+      else 
+      {
+      Console.WriteLine("A tighter race this year! Come out and cast your vote!");
+      }
     }
-    static void ExitProgram()
-    {
+      static void ExitProgram()
+      {
       Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
-    }
+      }  
   }
