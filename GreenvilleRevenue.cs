@@ -40,8 +40,6 @@ class Program
   {
     int lastYear = GetValidContestants("Enter the number of contestants last year: ");
     int thisYear = GetValidContestants("Enter the number of contestants this year: ");
-    //to verify that the user input is valid
-    Console.WriteLine($"Last year: {lastYear}"); Console.WriteLine($"This year: {thisYear}"); 
     
     if (thisYear >= lastYear * 2)
     {
